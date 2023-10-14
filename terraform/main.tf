@@ -14,8 +14,6 @@ provider "aws" {
   region = var.region
 }
 
-variable "private_key" {}
-
 resource "aws_instance" "server" {
     ami = "ami-024e6efaf93d85776"
     instance_type = "t2.micro"
@@ -76,14 +74,6 @@ resource "aws_security_group" "maingroup" {
             to_port = 80
         }
     ]
-  
-}
-
-variable "key_name" {
-  
-}
-
-variable "public_key" {
   
 }
 
