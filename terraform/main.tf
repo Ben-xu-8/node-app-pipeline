@@ -79,6 +79,13 @@ resource "aws_security_group" "maingroup" {
   
 }
 
+variable "key_name" {
+  
+}
+
+variable "public_key" {
+  
+}
 
 resource "aws_key_pair" "awsdeploy" {
     key_name = var.key_name
