@@ -45,7 +45,7 @@ jobs:
       - name: Set Output
         id: set-ip
         run: |-
-          echo "::set-output name=instance_public_ip::$(terraform output instance_public_ip)"
+          echo "::set-output name=instance_public_dns::$(terraform output instance_public_ip)"
         working-directory: ./terraform
   deploy-app:
     runs-on: ubuntu-latest
@@ -87,4 +87,4 @@ jobs:
             sudo docker stop nodeappcontainer || true
             sudo docker rm nodeappcontainer || true
             sudo docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
-            sudo docker run -d --name nodeappcontainer -p 8085:8080 $REGISTRY/$REPOSITORY:$IMAGE_TAG
+            sudo docker run -d --name nodeappcontainer -p 80:8080 $REGISTRY/$REPOSITORY:$IMAGE_TAG
