@@ -68,6 +68,9 @@ jobs:
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG . 
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
         working-directory: ./nodeapp
+      - name: Print Server IP
+        run: |
+          echo "Server IP: ${{needs.deploy-infra.outputs.SERVER_PUBLIC_IP}}"
       - name: Deploy Docker Image to EC2
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
