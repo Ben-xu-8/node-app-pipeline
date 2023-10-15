@@ -60,7 +60,7 @@ jobs:
       - name: Build, push docker image
         env:
           REGISTRY: ${{steps.login-ecr.outputs.registry}}
-          REPOSITORY: node-app-terraform-aws
+          REPOSITORY: node-app-pipeline
           IMAGE_TAG: ${{github.sha}}
           AWS_DEFAULT_REGION: us-east-1
         run: |-
