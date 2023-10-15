@@ -20,7 +20,7 @@ resource "aws_instance" "server" {
     instance_type = "t2.micro"
     key_name = aws_key_pair.awsdeploy.key_name
     vpc_security_group_ids = [aws_security_group.maingroup.id]
-    iam_instance_profile = aws_iam_instance_profile.ec2-user-1.name
+    iam_instance_profile = aws_iam_instance_profile.ec2-user-2.name
     connection {
       type = "ssh"
       host = self.public_ip
@@ -33,8 +33,8 @@ resource "aws_instance" "server" {
     }
 }
 
-resource "aws_iam_instance_profile" "ec2-user-1" {
-  name = "ec2-user-1"
+resource "aws_iam_instance_profile" "ec2-user-2" {
+  name = "ec2-user-2"
   role = "EC2-CR-2"
 }
 
